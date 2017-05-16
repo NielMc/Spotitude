@@ -11,8 +11,8 @@ import { Artist } from '../../../artist';
 })
 export class SearchComponent implements OnInit {
 
-	private searchStr: string;
-	private searchRes: Artist[];
+	public searchStr: string;
+	public searchRes: Artist[];
 
 	constructor(private _musicService: MusicService) {
 	}
