@@ -17,22 +17,34 @@ export class MusicService {
 
 
 	searchMusic(str: string, type = 'artist') {
+		let headers = new Headers();
+		let authToken = 'OAuth token';
+		headers.append('Authorization', 'Bearer '+authToken);
 		this.searchUrl = "https://api.spotify.com/v1/search?query="
 			+ str + "&offset=0&limit=20&type="
 			+ type + "&market=US";
 
-		return this._http.get(this.searchUrl).map(res => res.json())
+		return this._http.get(this.searchUrl, { headers }).map(res => res.json())
 	}
 	getArtist(id: string) {
+		let headers = new Headers();
+		let authToken = 'OAuth token';
+		headers.append('Authorization', 'Bearer '+authToken);
 		this.artistUrl = "https://api.spotify.com/v1/artists/" + id;
-		return this._http.get(this.artistUrl).map(res => res.json());
+		return this._http.get(this.artistUrl, { headers }).map(res => res.json());
 	}
 	getAlbums(artistId: string) {
+		let headers = new Headers();
+		let authToken = 'OAuth token';
+		headers.append('Authorization', 'Bearer '+authToken);
 		this.albumsUrl = "https://api.spotify.com/v1/artists/" + artistId + "/albums";
-		return this._http.get(this.albumsUrl).map(res => res.json());
+		return this._http.get(this.albumsUrl, { headers }).map(res => res.json());
 	}
 	getAlbum(id: string) {
+		let headers = new Headers();
+		let authToken = 'OAuth token';
+		headers.append('Authorization', 'Bearer '+authToken);
 		this.albumUrl = "https://api.spotify.com/v1/albums/" + id;
-		return this._http.get(this.albumUrl).map(res => res.json());
+		return this._http.get(this.albumUrl, { headers }).map(res => res.json());
 	}
 }
